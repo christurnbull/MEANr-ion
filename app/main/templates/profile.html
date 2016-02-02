@@ -1,0 +1,87 @@
+<ion-header-bar class="bar-subheader" ng-if="api.message.show" ng-class="api.message.data.class">
+  <p class="text-center" style="color: white;"><strong>{{api.message.data.msg}}</strong> {{api.message.data.desc}}</p>
+</ion-header-bar>
+<ion-view view-title="Profile">
+  <ion-content>
+	
+	<div ng-if="api.message.show" class="item bar" ng-class="api.message.data.class">
+	  <p class="text-center" style="color: white;"><strong>{{api.message.data.msg}}</strong> {{api.message.data.desc}}</p>
+	</div>
+	
+	<div class="bar bar-royal item" ng-show="$storage.userCapabilities.noEmail">
+	  <h1 class="title">
+		<strong>Missing email address.</strong> Please save an email address to confirm you account
+	  </h1>
+	</div>
+
+	<div class="bar bar-calm item" ng-show="!$storage.userCapabilities.confirmed && !$storage.userCapabilities.noEmail">
+	  <h1 class="title">
+		<strong>Unconfirmed Account.</strong> Please confirm your account using the email we sent. 
+		<strong ng-click="resend()"> Re-send email</strong> 
+	  </h1>
+	</div>
+	
+	<form name="form">
+	  <div class="provider-profile" ng-show="$storage.userCapabilities.provider">
+		<img ng-src="{{$storage.userCapabilities.passport.avatarUrl}}" class="profile-image img-circle provider-img">
+		Signed in with <label>{{$storage.userCapabilities.provider }}</label> <i class="fa fa-m fa-{{$storage.userCapabilities.provider}}"></i>
+	  </div>
+
+	  <label class="item item-input">
+		<i class="icon placeholder-icon">id</i>
+		<input ng-model="formData.userId" name="email" type="number" disabled>
+	  </label>
+	  <label class="item item-input">
+		<i class="icon ion-email placeholder-icon"></i>
+		<input ng-model="formData.email" name="email" type="email" placeholder="Email" required ng-disabled="!$storage.userCapabilities.noEmail">
+	  </label>
+	  <label class="item item-input">
+		<i class="icon ion-person placeholder-icon"></i>
+		<input ng-model="formData.name" name="name" type="text" placeholder="Name" required ng-disabled="$storage.userCapabilities.provider">
+	  </label>
+
+	  <div class="item">
+		<button class="button button-block button-energized ng-response-button"
+		  ng-show="!$storage.userCapabilities.provider"
+		  ng-response-button="reset()">
+		  Reset Password
+		</button>
+        <button type="button" class="button button-block button-positive ng-response-button"
+          ng-response-button="save(form)" submit="form"
+          ng-hide="$storage.userCapabilities.provider && !$storage.userCapabilities.noEmail">
+          Save
+        </button>
+	  </div>
+	</form>
+	
+	
+	<h4>Active Tokens</h4>
+	<div class="card" ng-repeat="token in persistTokens  | orderBy:'-updatedAt'">
+	  <div class="item item-divider">
+		<i class="ion-social-{{token.provider}}"></i> {{token.provider}}
+		<i class="ion-trash-b assertive right" ng-click="revoke(token.id ,token.token)"></i>
+	  </div>
+	  <div class="item item-text-wrap">
+		<div class="left">
+		  <div ng-ua-icons="{{token.ua}}" ionic></div>
+		</div>
+		<div class="right">
+		  <p>Last Refreshed: <strong>{{token.updatedAt | date:'medium'}}</strong></p>
+		  <p>First Sign In: <strong>{{token.createdAt | date:'medium'}}</strong></p>
+		  <p>&nbsp;</p>
+		</div>
+	  </div>
+	</div>
+	
+	<!--
+	<div class="row" ng-repeat="token in persistTokens | limitTo:30">
+		<div class="col" ng-repeat="field in token">
+			<div class="item item-button-right">
+			  <h3>{{field}}</h3>
+			</div>
+		</div>
+	</div>
+ -->
+	
+  </ion-content>
+</ion-view>

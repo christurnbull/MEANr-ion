@@ -1,0 +1,9 @@
+{
+  "appCfg": {
+    "appName": "MEANr",
+    "host":{
+      "name": "http://0.0.0.0:3000",
+      "path": ""
+    }
+  }
+}

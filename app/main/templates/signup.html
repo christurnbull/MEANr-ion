@@ -1,0 +1,78 @@
+<ion-view view-title="Sign Up">
+  <ion-content>
+	
+	<div ng-if="api.message.show" class="item bar" ng-class="api.message.data.class">
+	  <h1 class="title"><strong>{{api.message.data.msg}}</strong> {{api.message.data.desc}}</h1>
+	</div>
+
+	<form name="form" novalidate>
+      <div class="list">
+
+		<div ng-if="form.name.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.name.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.name.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.name.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-person placeholder-icon">
+		  </i>
+		  <input ng-model="formData.name" name="name" type="text" placeholder="Name">
+		</label>
+		
+		<div ng-if="form.email.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.email.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.email.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.email.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-email placeholder-icon"
+			ng-class="form.email.$valid ?  'balanced' : 'assertive'">
+		  </i>
+		  <input ng-model="formData.email" name="email" type="email" placeholder="Email" required>
+		</label>
+		
+		<div ng-if="form.password.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.password.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.password.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.password.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-unlocked placeholder-icon"
+			ng-class="form.password.$valid ?  'balanced' : 'assertive'">
+		  </i>
+		  <input ng-model="formData.password" name="password" type="password" placeholder="Password" required ng-pattern="passwordRegex">
+		</label>
+		
+		<div ng-if="form.cpassword.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.cpassword.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.cpassword.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.cpassword.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-locked placeholder-icon"
+			ng-class="form.cpassword.$valid ?  'balanced' : 'assertive'">
+		  </i>
+		  <input ng-model="formData.cpassword" name="cpassword" type="password" placeholder="Confirm Password" required match="formData.password">
+		</label>
+		
+        <label class="item">
+		  <button class="button button-block ng-response-button"
+			ng-class="form.$valid ? 'button-balanced' : 'button-default'"
+			ng-response-button="signup(form)" submit="form">
+			Sign Up
+		  </button>
+        </label>
+      </div>
+    </form>
+	
+	
+  </ion-content>
+</ion-view>

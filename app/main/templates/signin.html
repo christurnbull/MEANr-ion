@@ -1,0 +1,46 @@
+<ion-view view-title="Sign In">
+  <ion-content>
+
+    <form name="form" novalidate>
+      <div class="list">
+
+		<div ng-if="form.email.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.email.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.email.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.email.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-email placeholder-icon"
+			ng-class="form.email.$valid ?  'balanced' : 'assertive'">
+		  </i>
+		  <input ng-model="signinData.email" name="email" type="email" placeholder="Email" required>
+		</label>
+		
+		<div ng-if="form.password.tooltip" class="item bar bar-assertive fadeInUp"
+			 ng-class="form.password.$valid ?  'bar-light' : 'bar-assertive'">
+		  <h1 class="title">
+			{{form.password.tooltip}}
+			<i class="icon ion-checkmark" ng-class="form.password.$valid ?  'balanced' : 'hide'"></i>
+		  </h1>
+		</div>
+		<label class="item item-input">
+		  <i class="icon ion-locked placeholder-icon"
+			ng-class="form.password.$valid ?  'balanced' : 'assertive'">
+		  </i>
+		  <input ng-model="signinData.password" name="password" type="password" placeholder="Password" required>
+		</label>
+		
+        <label class="item">
+		  <button class="button button-block ng-response-button"
+			ng-class="form.$valid ? 'button-balanced' : 'button-default'"
+			ng-response-button="signin(form)" submit="form">
+			Sign In
+		  </button>
+        </label>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

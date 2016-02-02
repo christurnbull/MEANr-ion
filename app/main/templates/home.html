@@ -1,0 +1,23 @@
+<ion-view view-title="Main">
+  <ion-content style="background: linear-gradient(#6B728A, #B4D2DE);">
+	
+	<div class="row">
+	  <div class="col text-center" style="color: white;">
+		<img class="padding-top" src="main/assets/images/meanr-icon-128.png">
+		<h3 style="color: white;">Ionic Demo</h3>
+        <p></p>
+        <p>
+          This app uses the same MEANr api instance as the AngularJS web app except it uses persistent JWT tokens - there is no time limit when a token is refreshed.
+        </p>
+	  </div>
+	</div>
+	
+	<div class="row">
+	  <div class="col text-center">
+		<button class="button button-balanced" ui-sref="main.signin" ng-if="!$storage.token">Sign In</button>
+		<button class="button button-energized" ui-sref="main.signup" ng-if="!$storage.token">Sign Up</button></a>
+	  </div>
+	</div>	
+	
+  </ion-content>
+</ion-view>

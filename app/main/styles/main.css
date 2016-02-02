@@ -1,0 +1,27 @@
+
+/* animate.css */
+.fadeIn.ng-enter { animation: fadeIn 1s; }
+.fadeOut.ng-leave { animation: fadeOut 1s; }
+.fadeInUp.ng-enter { animation: fadeInUp 1s; }
+.fadeInDown.ng-enter { animation: fadeInDown 1s; }
+.fadeOutDown.ng-leave { animation: fadeOutDown 1s; }
+.fadeOutUp.ng-leave { animation: fadeOutUp 1s; }
+
+
+.right {  float: right; }
+.left {  float: left; }
+
+
+.bar.bar-meanr {
+    border-color: #555a6d;
+    background-color: #6B728A;
+    background-image: linear-gradient(0deg, #555a6d, #6B728A 50%, transparent 50%);
+    color: #fff;
+}
+
+
+.apiMessage.ng-enter {  animation: fadeIn 1s;  }
+.apiMessage.ng-leave {  animation: fadeOutUp 1s; }
+.apiMessageAttn.ng-enter {  animation: bounce 1s;  }
+.apiMessageAttn.ng-leave {  animation: fadeOutUp 1s; }
+

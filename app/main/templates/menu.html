@@ -1,0 +1,55 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <!-- CONTENT -->
+  <ion-side-menu-content>
+
+    <!-- header bar -->
+    <!-- the nav bar will be updated as we navigate between views -->
+    <ion-nav-bar class="bar-meanr">
+      <!-- back button, shown if applicable -->
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <!-- nav button, shown if applicable -->
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- ROUTING INJECTED HERE: pageContent -->
+    <ion-nav-view name="pageContent"></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <!-- SIDEMENU -->
+  <ion-side-menu side="left">
+
+    <!-- menu header -->
+    <ion-header-bar class="bar-meanr">
+      <h1 class="title" style="color: white;">Nav</h1>
+    </ion-header-bar>
+
+    <!-- menu content -->
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ui-sref="main.home">
+          Home
+        </ion-item>
+        <ion-item menu-close ui-sref="main.signin" ng-show="!$storage.token">
+          Sign In
+        </ion-item>
+        <ion-item menu-close ui-sref="main.signup" ng-show="!$storage.token">
+          Sign Up
+        </ion-item>
+        <ion-item menu-close ui-sref="main.profile" ng-show="$storage.token">
+          <i class="icon ion-person"></i> Profile
+        </ion-item>
+        <ion-item menu-close ng-click="user.signout()" ng-show="$storage.token">
+          <i class="icon ion-log-out"></i> Sign Out
+        </ion-item>
+      </ion-list>
+    </ion-content>
+
+  </ion-side-menu>
+
+</ion-side-menus>
