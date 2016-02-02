@@ -11,7 +11,7 @@ DEMO: https://meanr.io
 
 3. Install dependencies ``` npm i && bower i```
 
-4. Configure the API address/port and app name in ``` app/main/constants/env-dev.json ```
+4. Configure the API address/port and app name in ``` ./app/main/constants/env-dev.json ```
 
 5. Run using ``` gulp watch ```
 
